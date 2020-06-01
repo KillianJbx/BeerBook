@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using BeerBook.Models;
+using BeerBook.BDD;
 
 namespace BeerBook.Controllers
 {
@@ -18,11 +19,11 @@ namespace BeerBook.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Home()
         {
             return View();
         }
-
+       
         public IActionResult Privacy()
         {
             return View();
@@ -31,11 +32,42 @@ namespace BeerBook.Controllers
         {
             return View();
         }
-
         public IActionResult AddBeer()
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult AddBeer(BeerFormViewModel addedBeer)
+        {
+            IActionResult retour;
+
+            if (ModelState.IsValid)
+            {
+                BeerBDD beerBDD = new BeerBDD();
+                Beer beer = addedBeer.ToBeer();
+                beerBDD.Insert(beer);
+                retour = RedirectToAction("Index");
+            }
+            else
+            {
+                retour = View(addedBeer);
+            }
+            return retour;
+        }
+
+        public IActionResult Index()
+        {
+            BeerBDD beerBDD = new BeerBDD();
+
+            List<Beer> beers = beerBDD.GetAll();
+
+            BeersViewModel model = new BeersViewModel();
+            model.Beers = beers;
+            return View(model);
+        }
+
+        
        
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

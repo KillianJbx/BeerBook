@@ -1,8 +1,64 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model BeersViewModel
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Toutes les bières</h1>
+</div>
+
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Identifiant</th>
+        <th>Libelle</th>
+        <th>Type de Bière</th>
+        <th>Date de Production</th>
+        <th>Taux d'alcoolémie</th>
+        <th>Gamme de prix</th>
+        <th>Description</th>
+        <th>Options</th>
+    </tr>
+    @foreach ( BeerBook.BDD.Beer b in @Model.Beers)
+    {
+        Dictionary<string, string> parms = new Dictionary<string, string>
+{
+            { "id", b.Identifiant.ToString()}
+        };
+<tr>
+    <td>
+        @b.Identifiant
+    </td>
+    <td>
+
+        @b.Libelle
+
+    </td>
+    <td>
+
+        @b.IdentifiantCategorie
+
+    </td>
+    <td>
+        @b.DateProduction
+    </td>
+    <td>
+        @b.TauxAlcoolemie %
+    </td>
+    
+    <td>
+        @b.IdentifiantGamme
+    </td>
+
+    <td>
+        @b.Commentaire
+    </td>
+    <td>
+        <a asp-action="Delete" asp-all-route-data="parms">
+            <i class="far fa-trash-alt"></i>
+        </a>
+    </td>
+</tr>
+}
+</table>
+
+<div class="text-center">
+    <a class="btn btn-success" asp-action="AddBeer">Ajouter une bière</a>
 </div>
