@@ -29,7 +29,7 @@ namespace BeerBook.BDD
                         {
                             Categorie c = new Categorie();
 
-                            c.Identifiant = (short)reader["Identifiant"];
+                            c.Identifiant = (int)reader["Identifiant"];
 
                             c.Libelle = reader["Libelle"] is System.DBNull ? null : reader["Libelle"].ToString();
 
@@ -45,7 +45,45 @@ namespace BeerBook.BDD
                 return categories;
             }
 
-            public bool Insert(CategorieBDD categorie)
+        public Categorie Get(int id)
+        {
+
+            Categorie c = null;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = @"SELECT Identifiant, Libelle FROM Categorie
+                  WHERE Identifiant = @identifiant";
+
+                command.Parameters.AddWithValue("@identifiant", id);
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    reader.Read();
+
+                    c = new Categorie();
+
+                    c.Identifiant = (int)reader["Identifiant"];
+
+                    c.Libelle = reader["Libelle"] is System.DBNull ? null : reader["Libelle"].ToString();
+
+                   
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            return c;
+        }
+
+        public bool Insert(CategorieBDD categorie)
             {
                 return true;
             }

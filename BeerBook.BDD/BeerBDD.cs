@@ -65,7 +65,7 @@ namespace BeerBook.BDD
 
                         b.Libelle = reader["Libelle"] is System.DBNull ? null : reader["Libelle"].ToString();
 
-                        b.DateProduction = reader["DateProd"] is System.DBNull ? null : (DateTime?)reader["DateProd"];
+                        b.DateProduction = (int)reader["DateProd"];
 
                         b.TauxAlcoolemie = (float)reader["TauxAlcool"];
 
@@ -113,7 +113,7 @@ namespace BeerBook.BDD
 
                     b.Libelle = reader["Libelle"] is System.DBNull ? null : reader["Libelle"].ToString();
 
-                    b.DateProduction = reader["DateProd"] is System.DBNull ? null : (DateTime?)reader["DateProd"];
+                    b.DateProduction = (int)reader["DateProd"];
 
                     b.TauxAlcoolemie = (float)reader["TauxAlcool"];
 
@@ -160,5 +160,44 @@ namespace BeerBook.BDD
             return nbLignes == 1;
         }
 
+        public bool Update(Beer b)
+        {
+            int nbLignes = 0;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand();
+                command.Connection = connection;
+
+                command.CommandText = @"
+                    UPDATE Beers
+                       SET [Libelle] = @Libelle
+                          ,[DateProd] = @DateProd
+                          ,[TauxAlcool] = @TauxAlcool
+                          ,[IdentifiantCategorie] = @IdentifiantCategorie
+                          ,[IdentifiantGamme] = @IdentifiantGamme
+                          ,[Commentaire] = @Commentaire
+                     WHERE Identifiant = @id";
+                command.Parameters.AddWithValue("@id", b.Identifiant);
+                command.Parameters.AddWithValue("@Libelle", b.Libelle);
+                command.Parameters.AddWithValue("@DateProd", b.DateProduction);
+                command.Parameters.AddWithValue("@TauxAlcool", b.TauxAlcoolemie);
+                command.Parameters.AddWithValue("@IdentifiantCategorie", b.IdentifiantCategorie);
+                command.Parameters.AddWithValue("@IdentifiantGamme", b.IdentifiantGamme);
+                command.Parameters.AddWithValue("@Commentaire", b.Commentaire);
+
+                try
+                {
+                    connection.Open();
+                    nbLignes = command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            return nbLignes == 1;
+        }
     }
 }

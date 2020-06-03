@@ -6,7 +6,7 @@ namespace BeerBook.BDD
 {
     public class Categorie
     {
-        public short Identifiant { get; set; }
+        public int Identifiant { get; set; }
         public String Libelle { get; set; }
     }
 }

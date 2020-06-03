@@ -10,14 +10,28 @@
         <th>Identifiant</th>
         <th>Libelle</th>
         <th>Type de Bière</th>
-        <th>Date de Production</th>
+        <th>Année de mise en Production</th>
         <th>Taux d'alcoolémie</th>
         <th>Gamme de prix</th>
         <th>Description</th>
         <th>Options</th>
     </tr>
-    @foreach ( BeerBook.BDD.Beer b in @Model.Beers)
+    @foreach (BeerBook.BDD.Beer b in @Model.Beers)
     {
+        @foreach (BeerBook.BDD.Categorie c in Model.Categories)
+        {
+            if (b.IdentifiantCategorie == c.Identifiant)
+            {
+                b.Categorie = c.Libelle;
+            }
+        }
+        @foreach (BeerBook.BDD.Gamme g in @Model.Gammes)
+        {
+            if (b.IdentifiantGamme == g.Identifiant)
+            {
+                b.Gamme = g.Libelle;
+            }
+        }
         Dictionary<string, string> parms = new Dictionary<string, string>
 {
             { "id", b.Identifiant.ToString()}
@@ -33,7 +47,8 @@
     </td>
     <td>
 
-        @b.IdentifiantCategorie
+
+        @b.Categorie
 
     </td>
     <td>
@@ -42,9 +57,9 @@
     <td>
         @b.TauxAlcoolemie %
     </td>
-    
+
     <td>
-        @b.IdentifiantGamme
+        @b.Gamme
     </td>
 
     <td>
@@ -53,6 +68,9 @@
     <td>
         <a asp-action="Delete" asp-all-route-data="parms">
             <i class="far fa-trash-alt"></i>
+        </a>
+        <a asp-action="Edit" asp-all-route-data="parms">
+            <i class="far fa-edit"></i>
         </a>
     </td>
 </tr>

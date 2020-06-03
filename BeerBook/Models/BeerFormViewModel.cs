@@ -1,4 +1,6 @@
 ﻿using BeerBook.BDD;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,43 +11,34 @@ namespace BeerBook.Models
 {
     public class BeerFormViewModel
     {
+        [HiddenInput]
         public int Identifiant { get; set; }
 
-        [Display(Name = "Libellé")]
+        [Display(Name = "Nom de la bière")]
         [Required(ErrorMessage = "Le libellé est obligatoire")]
         public string Libelle { get; set; }
 
-        [DataType(DataType.Date)]
-        [Display(Name = "Date")]
-        public DateTime? DateProduction { get; set; }
+        [Display(Name = "Année de mise en production")]
+        public int? DateProduction { get; set; }
 
         [Display(Name = "Catégorie")]
         [Required(ErrorMessage = "La Catégorie est obligatoire")]
-        public int IdentifiantCategorie { get; set; }
+        public int  IdentifiantCategorie { get; set; }
 
-        [Display(Name = "Alcoolémie")]
-        [Required(ErrorMessage = "Le Taux d'alcoolémie est obligatoire")]
-        public float TauxAlcoolemie { get; set; }
+        public List<SelectListItem> Categories { get; set; }
 
-        [Display(Name = "Gamme")]
+        [Display(Name = "Taux d'alcoolémie")]
+        public string TauxAlcoolemie { get; set; }
+
+
+        [Display(Name = "Gamme de prix")]
         [Required(ErrorMessage = "La Gamme de prix est obligatoire")]
         public int IdentifiantGamme{ get; set; }
+
+        public List<SelectListItem> Gammes { get; set; }
 
         [Display(Name = "Description")]
         public String Commentaire { get; set; }
 
-        public Beer ToBeer()
-        {
-            Beer beer = new Beer();
-            beer.Libelle = this.Libelle;
-            beer.DateProduction = this.DateProduction;
-            beer.TauxAlcoolemie = this.TauxAlcoolemie;
-            beer.IdentifiantCategorie = this.IdentifiantCategorie;
-            beer.IdentifiantGamme = this.IdentifiantGamme;
-            beer.Commentaire = this.Commentaire;
-            beer.Identifiant = this.Identifiant;
-
-            return beer;
-        }
     }
 }

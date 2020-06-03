@@ -1,0 +1,33 @@
+﻿@model BeerDeleteViewModel
+    <div class="text-center">
+        <h1 class="display-4">Supprime ta bière</h1>
+    </div>
+
+    <dl class="row">
+       
+        <dt class="col-sm-2">Identifiant</dt>
+        <dd class="col-sm-10">@Model.Beer.Identifiant</dd>
+
+        <dt class="col-sm-2">Libelle</dt>
+        <dd class="col-sm-10">@Model.Beer.Libelle</dd>
+
+        <dt class="col-sm-2">Année de mise en production</dt>
+        <dd class="col-sm-10">@Model.Beer.DateProduction &nbsp;</dd>
+
+        <dt class="col-sm-2">Taux Alcoolémie</dt>
+        <dd class="col-sm-10">@Model.Beer.TauxAlcoolemie %</dd>
+
+        <dt class="col-sm-2">Categorie</dt>
+        <dd class="col-sm-10">@Model.Categorie.Libelle</dd>
+
+        <dt class="col-sm-2">Gamme</dt>
+        <dd class="col-sm-10">@Model.Gamme.Libelle</dd>
+
+        <dt class="col-sm-2">Description</dt>
+        <dd class="col-sm-10">@Model.Beer.Commentaire</dd>
+    </dl>
+
+<form method="post" action="/Home/Delete">
+    <input type="hidden" name="id" value="@Model.Beer.Identifiant" />
+    <input class="btn btn-danger" type="submit" value="Confirmer" />
+</form>

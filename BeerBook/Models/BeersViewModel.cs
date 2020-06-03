@@ -10,5 +10,7 @@ namespace BeerBook.Models
     public class BeersViewModel
     {
         public List<Beer> Beers { get; set; }
+        public List<Categorie> Categories { get; set; }
+        public List<Gamme> Gammes { get; set; }
     }
 }

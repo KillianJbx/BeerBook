@@ -1,14 +1,14 @@
 ﻿
 @model BeerFormViewModel
 @{
-    ViewData["Title"] = "AddBeer";
+    ViewData["Title"] = "EditBeer";
 }
 <div class="text-center">
-    <h1 class="display-4">Ajoute ta bière</h1>
+    <h1 class="display-4">Modifie ta bière</h1>
 </div>
 
 <div class="container">
-    <form asp-action="AddBeer" method="post">
+    <form asp-action="Edit" method="post">
 
         <input asp-for="Identifiant" type="hidden" class="form-control" />
         <div class="form-group">
@@ -47,17 +47,13 @@
             <span asp-validation-for="Commentaire" class="text-danger"></span>
         </div>
 
-        <input class="btn btn-success" type="submit" value="Ajouter" />
+        <div class="form-group">
+            <input type="submit" value="Sauvegarder" class="btn btn-primary" />
+        </div>
 
     </form>
 </div>
 
 
 
-
-
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
 
