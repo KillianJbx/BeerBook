@@ -108,10 +108,13 @@ namespace BeerBook.Controllers
             
             BeerBDD beerBDD = new BeerBDD();
             Beer beer = beerBDD.Get(id);
+
             CategorieBDD categorieBDD = new CategorieBDD();
             Categorie categorie = categorieBDD.Get(beer.IdentifiantCategorie);
+
             GammeBDD gammeBDD = new GammeBDD();
             Gamme gamme = gammeBDD.Get(beer.IdentifiantGamme);
+
             BeerDeleteViewModel model = new BeerDeleteViewModel();
             model.Beer = beer;
             model.Categorie = categorie;

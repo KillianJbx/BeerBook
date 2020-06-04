@@ -52,7 +52,7 @@ namespace BeerBook.BDD
             {
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
-                command.CommandText = @"SELECT Identifiant, Libelle FROM Categorie
+                command.CommandText = @"SELECT Identifiant, Libelle FROM Gamme
                   WHERE Identifiant = @identifiant";
 
                 command.Parameters.AddWithValue("@identifiant", id);

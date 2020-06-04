@@ -19,6 +19,7 @@ namespace BeerBook.Models
         public string Libelle { get; set; }
 
         [Display(Name = "Année de mise en production")]
+        [Required(ErrorMessage = "Bien que la Base de donnée accepte ce champs à valeur nulle, moi je vous oblige.")]
         public int? DateProduction { get; set; }
 
         [Display(Name = "Catégorie")]
@@ -28,6 +29,7 @@ namespace BeerBook.Models
         public List<SelectListItem> Categories { get; set; }
 
         [Display(Name = "Taux d'alcoolémie")]
+        [Required(ErrorMessage = "Le taux d'alcoolémie est obligatoire")]
         public string TauxAlcoolemie { get; set; }
 
 
@@ -38,6 +40,7 @@ namespace BeerBook.Models
         public List<SelectListItem> Gammes { get; set; }
 
         [Display(Name = "Description")]
+        [Required(ErrorMessage = "Idem que la date :D")]
         public String Commentaire { get; set; }
 
     }

@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerBook", "BeerBook\BeerBook.csproj", "{E57C30B8-A378-40B9-84A6-DF154FE9E4A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeerBook", "BeerBook\BeerBook.csproj", "{E57C30B8-A378-40B9-84A6-DF154FE9E4A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerBook.BDD", "BeerBook.BDD\BeerBook.BDD.csproj", "{DADA93EF-7F4E-449E-8494-6622792F8810}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeerBook.BDD", "BeerBook.BDD\BeerBook.BDD.csproj", "{DADA93EF-7F4E-449E-8494-6622792F8810}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerBook.WF", "BeerBook.WF\BeerBook.WF.csproj", "{EA2C9A0A-B2DB-47FB-9F98-2BE2734EDA65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{DADA93EF-7F4E-449E-8494-6622792F8810}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DADA93EF-7F4E-449E-8494-6622792F8810}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DADA93EF-7F4E-449E-8494-6622792F8810}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA2C9A0A-B2DB-47FB-9F98-2BE2734EDA65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA2C9A0A-B2DB-47FB-9F98-2BE2734EDA65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA2C9A0A-B2DB-47FB-9F98-2BE2734EDA65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA2C9A0A-B2DB-47FB-9F98-2BE2734EDA65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
