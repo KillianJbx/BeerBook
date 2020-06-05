@@ -24,6 +24,7 @@ namespace BeerBook.WF
 
         public void Load_Combobox()
         {
+            //Fonctionne qui remplie les listes déroulantes avec les valeurs de la BDD pour Categorie et Gamme
             GammeBDD gammeBDD = new GammeBDD();
             List<Gamme> gammes = gammeBDD.GetAll();
             foreach (Gamme g in gammes)

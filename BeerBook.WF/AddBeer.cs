@@ -32,7 +32,7 @@ namespace BeerBook.WF
         private void Checker(object sender, EventArgs e)
         {
             
-            //Controle de saisie ça marche que sur un à la fois, je sais c'est nul  mais j'en ai ma claque
+            // le Controle de saisie ne marche que sur un à la fois, je sais c'est nul  mais j'en ai ma claque
             if (String.IsNullOrEmpty((this.beerUserControl.Controls["NomTextBox"].Text)) &&  String.IsNullOrEmpty((this.beerUserControl.Controls["TauxAlcoolémieTextBox"].Text)))
             {
                 this.ValiderButton.Enabled = false;

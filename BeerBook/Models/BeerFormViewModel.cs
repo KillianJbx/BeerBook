@@ -19,7 +19,7 @@ namespace BeerBook.Models
         public string Libelle { get; set; }
 
         [Display(Name = "Année de mise en production")]
-        [Required(ErrorMessage = "Bien que la Base de donnée accepte ce champs à valeur nulle, moi je vous oblige.")]
+        [Required(ErrorMessage = "Bien que la Base de donnée accepte ce champs à valeur nulle, moi je vous oblige à le compléter.")]
         public int? DateProduction { get; set; }
 
         [Display(Name = "Catégorie")]
